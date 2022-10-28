@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 
 
 Route::resource("products",ProductController::class);
 Route::resource("supllier",SupplierController::class);
+Route::resource("cart",CartController::class);
 
 // public routes
 
