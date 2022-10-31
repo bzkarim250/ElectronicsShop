@@ -16,13 +16,15 @@ class UserController extends Controller
         $fields=$request->validate([
             'name'=>'required|string',
             'email'=>'required|email|unique:users,email',
-            'password'=>'required|string|confirmed'
+            'password'=>'required|string|confirmed',
+            'role'=>'string'
         ]);
 
         $user=User::create([
             'name'=>$fields['name'],
             'email'=>$fields['email'],
-            'password'=>bcrypt($fields['password'])
+            'password'=>bcrypt($fields['password']),
+            'role'=>$fields['role']
         ]);
 
         $token=$user->createToken('MyAppToken')->plainTextToken;

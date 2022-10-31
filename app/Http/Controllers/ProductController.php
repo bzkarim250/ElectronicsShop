@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-
 use Illuminate\Http\Request;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProductController extends Controller
 {
@@ -26,7 +26,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        return Product::create($request->all());
+        $fields = $request ->validate([
+            'title'=>'required|string',
+            'description'=>'required',
+            'image'=>'image|mimes:jpeg,jpg,png',
+            'price'=>'required|integer',
+            'color'=>'required|string',
+            'size'=>'required|integer',
+            'categories'=>'required|string',
+        ]);
+
+        $product =  new Product();
+        
+        $imgUrl = Cloudinary::upload($fields['image']->getRealPath())->getSecurePath();
+
+        $product->title=$fields['title'];
+        $product->description = $fields['description'];
+        $product->image = $imgUrl;
+        $product->price = $fields['price'];
+        $product->color = $fields['color'];
+        $product->size = $fields['size'];
+        $product->categories=$fields['categories'];
+
+        $product->save();
+
+        return response([$product],201);
+        
+
+        
+
     }
 
     /**

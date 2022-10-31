@@ -19,4 +19,8 @@ class Product extends Model
         'price',
         'inStock',
     ];
+
+    public function supplier(){
+        return $this->belongsTo(User)
+    }
 }
