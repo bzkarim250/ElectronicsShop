@@ -21,6 +21,6 @@ class Product extends Model
     ];
 
     public function supplier(){
-        return $this->belongsTo(User)
+        return $this->belongsTo(User);
     }
 }
