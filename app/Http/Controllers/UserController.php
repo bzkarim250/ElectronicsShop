@@ -27,11 +27,8 @@ class UserController extends Controller
             'role'=>$fields['role']
         ]);
 
-        $token=$user->createToken('MyAppToken')->plainTextToken;
-
         return response([
-            'user'=>$user,
-            'token'=>$token
+            'user'=>$user
         ],201);
     }
 

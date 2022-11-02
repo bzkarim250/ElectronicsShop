@@ -18,10 +18,10 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->string('image');
-            $table->string('color');
-            $table->string('size');
-            $table->string('categories');
+            $table->json('image');
+            $table->json('color');
+            $table->json('size');
+            $table->json('categories');
             $table->decimal('price',7,4);
             $table->boolean('inStock')->default(true);
             $table->timestamps();

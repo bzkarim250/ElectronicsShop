@@ -27,22 +27,26 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $fields = $request ->validate([
-            'title'=>'required|string',
-            'description'=>'required',
-            'image'=>'image|mimes:jpeg,jpg,png',
-            'price'=>'required|integer',
-            'color'=>'required|string',
-            'size'=>'required|integer',
-            'categories'=>'required|string',
+            'title'=>'',
+            'description'=>'',
+            'image'=>'',
+            'price'=>'',
+            'color'=>'',
+            'size'=>'',
+            'categories'=>'',
         ]);
 
         $product =  new Product();
-        
-        $imgUrl = Cloudinary::upload($fields['image']->getRealPath())->getSecurePath();
+        $images=array();
+        foreach($fields['image'] as $image){
+            $imgUrl = Cloudinary::upload($image->getRealPath())->getSecurePath();
+            array_push($images,$imgUrl);
+        }
+       
 
         $product->title=$fields['title'];
         $product->description = $fields['description'];
-        $product->image = $imgUrl;
+        $product->image = $images;
         $product->price = $fields['price'];
         $product->color = $fields['color'];
         $product->size = $fields['size'];

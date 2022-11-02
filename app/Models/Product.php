@@ -19,6 +19,12 @@ class Product extends Model
         'price',
         'inStock',
     ];
+    protected $casts=[
+        'color'=>'array',
+        'size'=>'array',
+        'categories'=>'array',
+        'image'=>'array'
+    ];
 
     public function supplier(){
         return $this->belongsTo(User);
