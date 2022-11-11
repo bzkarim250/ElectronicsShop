@@ -17,14 +17,14 @@ class UserController extends Controller
             'name'=>'required|string',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|string|confirmed',
-            'role'=>'string'
+            'role_id'=>'integer'
         ]);
 
         $user=User::create([
             'name'=>$fields['name'],
             'email'=>$fields['email'],
             'password'=>bcrypt($fields['password']),
-            'role'=>$fields['role']
+            'role_id'=>$fields['role_id']
         ]);
 
         return response([

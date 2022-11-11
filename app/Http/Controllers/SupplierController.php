@@ -26,6 +26,7 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        // 'phone' => 'required|numeric|min:8|max:11',
         return Supplier::create($request->all());
     }
 

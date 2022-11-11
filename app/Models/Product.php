@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 
 class Product extends Model
 {
@@ -18,6 +19,7 @@ class Product extends Model
         'categories',
         'price',
         'inStock',
+        'user_id'
     ];
     protected $casts=[
         'color'=>'array',
@@ -26,7 +28,7 @@ class Product extends Model
         'image'=>'array'
     ];
 
-    public function supplier(){
-        return $this->belongsTo(User);
+    public function user(){
+       return $this->belongsTo(User::class);
     }
 }

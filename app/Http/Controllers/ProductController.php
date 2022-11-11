@@ -34,6 +34,7 @@ class ProductController extends Controller
             'color'=>'',
             'size'=>'',
             'categories'=>'',
+            'user_id'=>''
         ]);
 
         $product =  new Product();
@@ -51,9 +52,8 @@ class ProductController extends Controller
         $product->color = $fields['color'];
         $product->size = $fields['size'];
         $product->categories=$fields['categories'];
-
+        $product->user_id=$fields['user_id'];
         $product->save();
-
         return response([$product],201);
         
 
