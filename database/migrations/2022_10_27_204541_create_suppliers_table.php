@@ -18,10 +18,13 @@ class CreateSuppliersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('phone');
+            $table->string('password');
+            $table->bigInteger('phone');
             $table->longText('description');
-            $table->string('image');
-            $table->string('payment_method');
+            $table->bigInteger('id_number');
+            $table->string('id_image');
+            $table->string('profile_image');
+            $table->bigInteger('payment_card');
             $table->timestamps();
         });
     }

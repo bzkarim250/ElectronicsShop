@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailNotify;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\MailController;
 
 class UserController extends Controller
 {
@@ -27,8 +29,14 @@ class UserController extends Controller
             'role_id'=>$fields['role_id']
         ]);
 
+        $data = [
+            'subject'=>'Electronics shop mail',
+            'body'=>'this is the email test'
+        ];
+        Mail::to($fields['email'])->send(new MailNotify($data));
+        
         return response([
-            'user'=>$user
+            'user'=>$user,
         ],201);
     }
 

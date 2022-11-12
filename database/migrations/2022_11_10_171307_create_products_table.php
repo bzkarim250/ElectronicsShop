@@ -24,13 +24,13 @@ class CreateProductsTable extends Migration
             $table->json('categories');
             $table->decimal('price',7,4);
             $table->boolean('inStock')->default(true);
-            // $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();    
         });
 
-        // Schema::table('products', function (Blueprint $table) {
-        //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        // });
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
     }
 
     /**

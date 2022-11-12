@@ -19,16 +19,22 @@ class RoleAndPermissionSeeder extends Seeder
         //
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        Permission::create(['name' => 'approve supplier']);
-        Permission::create(['name' => 'reject supplier']);
-        Permission::create(['name' => 'delete supplier']);
-        Permission::create(['name' => 'create supplier']);
+        // permissions
+        $createSupplier = 'create supplier';
+        $deleteSupplier = 'delete supplier';
+        $rejectSupplier = 'reject supplier';
+        $approveSupplier = 'approve supplier';
 
-        // create permissios
         $createProduct = 'create product';
         $updateProduct = 'update product';
         $editProduct = 'edit product';
         $deleteProduct = 'delete product';
+
+        Permission::create(['name' => $approveSupplier]);
+        Permission::create(['name' => $rejectSupplier]);
+        Permission::create(['name' => $deleteSupplier]);
+        Permission::create(['name' => $createSupplier]);
+      
         Permission::create(['name' => $createProduct]);
         Permission::create(['name' => $updateProduct]);
         Permission::create(['name' => $editProduct]);
@@ -41,7 +47,16 @@ class RoleAndPermissionSeeder extends Seeder
         $Supplier='supplier';
         $customer='customer';
         Role::create(['name'=>$superAdmin])->givePermissionTo(Permission::all());
-        Role::create(['name'=>$Admin]);
+        Role::create(['name'=>$Admin]) -> givePermissionTo([
+            $approveSupplier,
+            $rejectSupplier,
+            $createSupplier,
+            $deleteSupplier,
+            $createProduct,
+            $editProduct,
+            $deleteProduct,
+            $updateProduct
+        ]);
         Role::create(['name'=>$Supplier])->givePermissionTo([
             $createProduct,
             $editProduct,

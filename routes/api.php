@@ -24,7 +24,7 @@ Route::post("/login",[UserController::class,'login']);
 Route::post("/logout",[UserController::class,'logout']);
 
 // protected routes
-Route::group(['middleware'=>['auth:sanctum' AND 'can:delete product']], function () {
+Route::group(['middleware'=>['auth:sanctum','can:delete product']], function () {
     Route::delete('/products/delete/{id}',[ProductController::class,'destroy']);
 });
 
@@ -32,7 +32,7 @@ Route::group(['middleware'=>['auth:sanctum','can:create product']], function () 
     Route::post('/products',[ProductController::class,'store']);
 });
 
-Route::group(['middleware'=>['auth:sanctum' AND 'can:update product']], function () {
+Route::group(['middleware'=>['auth:sanctum','can:update product']], function () {
     Route::put('/products/update/{id}',[ProductController::class,'update']);
 });
 
@@ -42,7 +42,14 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
 });
 
 
+// supplier
+
+Route::get("/supplier/getAll",[SupplierController::class,'index']);
+Route::post("/supplier/create",[SupplierController::class,'store']);
+Route::get("/supplier/get/{id}",[SupplierController::class,'show']);
+Route::delete("/supplier/delete/{id}",[SupplierController::class,'destroy']);
+Route::patch("/supplier/update/{id}",[SupplierController::class,'update']);
+
 Route::resource("products",ProductController::class);
-Route::resource("supllier",SupplierController::class);
-Route::resource("cart",CartController::class);
+// Route::resource("supllier",SupplierController::class);
 Route::resource("order",OrderController::class);
