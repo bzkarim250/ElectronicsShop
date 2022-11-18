@@ -48,8 +48,10 @@ Route::get("/supplier/getAll",[SupplierController::class,'index']);
 Route::post("/supplier/create",[SupplierController::class,'store']);
 Route::get("/supplier/get/{id}",[SupplierController::class,'show']);
 Route::delete("/supplier/delete/{id}",[SupplierController::class,'destroy']);
-Route::patch("/supplier/update/{id}",[SupplierController::class,'update']);
+Route::put("/supplier/update/{id}",[SupplierController::class,'update']);
 
 Route::resource("products",ProductController::class);
 // Route::resource("supllier",SupplierController::class);
 Route::resource("order",OrderController::class);
+
+
