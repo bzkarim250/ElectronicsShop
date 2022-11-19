@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laravel 9 Stripe Payment Gateway Integration Example - LaravelTuts.com</title>
+    <title>Payment</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -13,7 +13,7 @@
 <body>
 <div class="container">
     
-    <h2 class="text-center">Laravel 9 Stripe Payment Gateway Integration Example - LaravelTuts.com</h2>
+    <h2 class="text-center">Stripe Payment</h2>
     
     <div class="row">
         <div class="col-md-7 col-md-offset-3">
