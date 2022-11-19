@@ -46,13 +46,6 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $order=Order::find($id);
-        $order->update($request->all());
-        return $order;
-
-    }
 
     /**
      * Remove the specified resource from storage.
