@@ -2191,11 +2191,12 @@ textarea.input {
 
 
 .form-group input{
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+  margin-top: 25px;
 }
 .login{
   position:absolute;
-  top: 25%;
+  top: 10%;
 }
 .button{
   background:transparent; 

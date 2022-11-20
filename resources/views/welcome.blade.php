@@ -65,8 +65,14 @@
 			</button>
 		</div>
 		<div class="modal-body form-group">
-		<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		<input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		@error('email')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror
+		<input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		@error('password')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
@@ -79,7 +85,7 @@
 
 
 <!-- Modal Signup -->
-<form name="register-form" id="register-form" action="/register" method="post">
+<form  class="row g-3 needs-validation" novalidate name="register-form" id="register-form"action="/register" method="post">
 	{{csrf_field()}}
 	<div class="modal fade login" id="exampleModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -91,14 +97,26 @@
 			</button>
 		</div>
 		<div class="modal-body form-group">
-		<input type="name" class="form-control" name="name" id="exampleInputName"placeholder="Enter Name">		
+		<input type="name" class="form-control" name="name" id="exampleInputName"placeholder="Enter Name">
+		@error('name')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror	
 		<input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		@error('email')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror
 		<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-		<input type="password" class="form-control" name="password_confirmation" id="exampleInputPassword1" placeholder="Confirm Password">      
+		@error('password')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror
+		<input type="password" class="form-control" name="password_confirmation" id="exampleInputPassword1" placeholder="Confirm Password"> 
+		@error('password_confirmation')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror     
 	</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-			<button type="submit" class="btn btn-danger">Register</button>
+			<button type="submit" class="btn btn-danger" [disabled]="!ngForm.valid">Register</button>
 		</div>
 		</div>
 	</div>
