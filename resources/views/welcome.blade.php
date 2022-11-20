@@ -105,6 +105,10 @@
 		@error('email')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror
+			<input type="text" class="form-control" placeholder="Enter Role_id" name="role_id">
+		@error('email')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror
 		<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
 		@error('password')
 			<b><span class="text-danger">{{$message}}</span></b>
