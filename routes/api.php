@@ -52,6 +52,8 @@ Route::put("/supplier/update/{id}",[SupplierController::class,'update']);
 
 Route::resource("products",ProductController::class);
 // Route::resource("supllier",SupplierController::class);
-Route::resource("order",OrderController::class);
+Route::group(['middleware'=>['auth:sanctum','can:delete order']], function () {
+    Route::delete('/orders/delete/{id}',[OrderController::class,'destroy']);
+});
 
 
