@@ -47,11 +47,63 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+						<li><button data-toggle="modal" data-target="#exampleModalSignup"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class="fa fa-user-o" ></i>Signup</button></li>
+						<li><button data-toggle="modal" data-target="#exampleModal"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-in" ></i>Login</button></li>
 					</ul>
 				</div>
 			</div>
+<!-- Modal  Login-->
+<form name="login-form" id="login-form" action="/login" method="post">
+	{{csrf_field()}}
+	<div class="modal fade login" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">LogIn</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body form-group">
+		<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+			<button type="submit" class="btn btn-danger">Login</button>
+		</div>
+		</div>
+	</div>
+	</div>
+</form>
+
+
+<!-- Modal Signup -->
+<form name="register-form" id="register-form" action="/register" method="post">
+	{{csrf_field()}}
+	<div class="modal fade login" id="exampleModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Signup</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body form-group">
+		<input type="name" class="form-control" name="name" id="exampleInputName"placeholder="Enter Name">		
+		<input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+		<input type="password" class="form-control" name="password_confirmation" id="exampleInputPassword1" placeholder="Confirm Password">      
+	</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+			<button type="submit" class="btn btn-danger">Register</button>
+		</div>
+		</div>
+	</div>
+	</div>
+</form>
 			<!-- /TOP HEADER -->
 
 			<!-- MAIN HEADER -->
