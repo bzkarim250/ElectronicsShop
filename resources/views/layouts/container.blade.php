@@ -145,8 +145,8 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="/" class="logo">
-									<img src="./img/logo.png" alt="">
+								<a href="#" class="logo">
+									<img src="{{URL::asset('./img/logo.png')}}" alt="">
 								</a>
 							</div>
 						</div>
@@ -340,12 +340,12 @@
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
-		<script src="js/jquery.zoom.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="{{URL::asset('js/jquery.min.js')}}"></script>
+		<script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+		<script src="{{URL::asset('js/slick.min.js')}}"></script>
+		<script src="{{URL::asset('js/nouislider.min.js')}}"></script>
+		<script src="{{URL::asset('js/jquery.zoom.min.js')}}"></script>
+		<script src="{{URL::asset('js/main.js')}}"></script>
 
 	</body>
 </html>

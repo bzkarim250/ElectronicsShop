@@ -31,7 +31,7 @@
                                     <div class="price-box pt-20">
                                         <span class="new-price new-price-2">${{$product->price}}</span>
                                     </div>
-                                    <div class="single-add-to-cart">
+                                    <div class="single-add-to-cart" style="margin: 10px  ;">
                                         <form action="#" class="cart-quantity">
                                             <div class="quantity">
                                                 <label>Quantity</label>
@@ -41,47 +41,20 @@
                                                     <div class="inc qtybutton" style="cursor: pointer;"><i class="fa fa-angle-right text-bold"></i></div>
                                                 </div>
                                             </div>
-                                            <button class="add-to-cart" type="submit">Add to cart</button>
+                                            <div class="add-to-cart" >
+												<button class="add-to-cart-btn" style="color:white;background-color:brown; padding:5px 10px;border:none;margin:10px 0px;"><i class="fa fa-shopping-cart"></i> add to cart</button>
+											</div>
                                         </form>
                                     </div>
                                     <div class="product-additional-info pt-25">
-                                        <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
                                         <div class="product-social-sharing pt-25">
-                                            <ul>
+                                            <ul style="display: flex; justify-content:space-around;">
                                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
                                                 <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
                                                 <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
                                                 <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
                                             </ul>
                                         </div>
-                                    </div>
-                                    <div class="block-reassurance">
-                                        <ul>
-                                            <li>
-                                                <div class="reassurance-item">
-                                                    <div class="reassurance-icon">
-                                                        <i class="fa fa-check-square-o"></i>
-                                                    </div>
-                                                    <p>Security policy (edit with Customer reassurance module)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="reassurance-item">
-                                                    <div class="reassurance-icon">
-                                                        <i class="fa fa-truck"></i>
-                                                    </div>
-                                                    <p>Delivery policy (edit with Customer reassurance module)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="reassurance-item">
-                                                    <div class="reassurance-icon">
-                                                        <i class="fa fa-exchange"></i>
-                                                    </div>
-                                                    <p> Return policy (edit with Customer reassurance module)</p>
-                                                </div>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
