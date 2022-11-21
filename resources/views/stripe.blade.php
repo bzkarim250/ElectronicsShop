@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/container')
 @section('content')
 <!DOCTYPE html>
 <html>
