@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Electro - HTML Ecommerce Template</title>
+		<title>ElectronicsShop</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -42,9 +42,9 @@
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+						<li><a href="#"><i class="fa fa-phone"></i> +250780514840</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> electronicsshop@gmail.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> Kigali Rw</a></li>
 					</ul>
 					<ul class="header-links pull-right">
 						
@@ -53,7 +53,7 @@
 						<li><button data-toggle="modal" data-target="#exampleModalSignup"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class="fa fa-user-o" ></i>Signup</button></li>
 						<li><button data-toggle="modal" data-target="#exampleModal"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-in" ></i>Login</button></li>
 					@else
-					hello {{auth()->user()->email}}
+					<span class="button"><i class=" fa fa-user" style="color: red;"></i> {{auth()->user()->email}} </span>
 					<li><a href="/logout" class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-out" ></i>Logout</a></li>
 						@endif
 					</ul>
