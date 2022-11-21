@@ -2188,3 +2188,19 @@ textarea.input {
     margin-top: 10px;
   }
 }
+
+
+.form-group input{
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+.login{
+  position:absolute;
+  top: 10%;
+}
+.button{
+  background:transparent; 
+  border:none; 
+  color:white;
+  font-size:14px;
+}
