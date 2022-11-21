@@ -1,3 +1,5 @@
+@extends('layout')
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +15,7 @@
 <body>
 <div class="container">
     
-    <h2 class="text-center">Stripe Payment</h2>
+    <h2 class="text-center" style="color:red ;">Payment Form</h2>
     
     <div class="row">
         <div class="col-md-7 col-md-offset-3">
@@ -76,7 +78,7 @@
     
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ($100)</button>
+                                <button class="btn btn-danger btn-lg btn-block" type="submit">Pay Now ($100)</button>
                             </div>
                         </div>
                             
@@ -161,3 +163,4 @@ $(function() {
 });
 </script>
 </html>
+@endsection

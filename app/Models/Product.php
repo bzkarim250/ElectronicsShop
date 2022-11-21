@@ -28,9 +28,9 @@ class Product extends Model
         'image'=>'array'
     ];
 
-    // public function user(){
-    //     return $this->belongsTo(User::class);
-    //  }
+    public function user(){
+        return $this->belongsTo(User::class);
+     }
      public function order(){
          return $this->belongsTo(Order::class);
      }
