@@ -22,6 +22,26 @@ use App\Http\Controllers\OrderController;
 Route::get('/',function(){
     return view('home');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::controller(StripePaymentController::class)->group(function(){
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
