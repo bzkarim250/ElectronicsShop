@@ -31,7 +31,7 @@
                                     <div class="price-box pt-20">
                                         <span class="new-price new-price-2">${{$product->price}}</span>
                                     </div>
-                                    <div class="single-add-to-cart">
+                                    <div class="single-add-to-cart" style="margin: 10px  ;">
                                         <form action="#" class="cart-quantity">
                                             <div class="quantity">
                                                 <label>Quantity</label>
@@ -45,7 +45,6 @@
                                         </form>
                                     </div>
                                     <div class="product-additional-info pt-25">
-                                        <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
                                         <div class="product-social-sharing pt-25">
                                             <ul>
                                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
@@ -54,34 +53,6 @@
                                                 <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
                                             </ul>
                                         </div>
-                                    </div>
-                                    <div class="block-reassurance">
-                                        <ul>
-                                            <li>
-                                                <div class="reassurance-item">
-                                                    <div class="reassurance-icon">
-                                                        <i class="fa fa-check-square-o"></i>
-                                                    </div>
-                                                    <p>Security policy (edit with Customer reassurance module)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="reassurance-item">
-                                                    <div class="reassurance-icon">
-                                                        <i class="fa fa-truck"></i>
-                                                    </div>
-                                                    <p>Delivery policy (edit with Customer reassurance module)</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="reassurance-item">
-                                                    <div class="reassurance-icon">
-                                                        <i class="fa fa-exchange"></i>
-                                                    </div>
-                                                    <p> Return policy (edit with Customer reassurance module)</p>
-                                                </div>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
