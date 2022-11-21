@@ -17,6 +17,8 @@ use App\Http\Controllers\OrderController;
 // product routes
 Route::get('/products',[ProductController::class,'index']);
 Route::get('/products/{id}',[ProductController::class,'show']);
+Route::post('/products/create',[ProductController::class,'store']);
+Route::resource("/products",ProductController::class);
 
 // user routes
 Route::post("/register",[UserController::class,'register']);

@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->json('color');
             $table->json('size');
             $table->json('categories');
-            $table->decimal('price',7,4);
+            $table->decimal('price',13,4);
             $table->boolean('inStock')->default(true);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();    
