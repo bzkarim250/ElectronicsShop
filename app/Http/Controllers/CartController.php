@@ -1,67 +1,74 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
+use App\Models\Product;
+// use App\Models\ShipDivision;
 use Illuminate\Http\Request;
+// use Cart;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\Cart;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function addToCart(Request $request, $id)
     {
-        return Cart::all();
+        $product = Product::findOrFail($id);
+        if(Session::has('coupon')){
+            Session::forget('coupon');
+        }
+
+        if($product->discount_price == NULL){
+            Cart::add([
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->qty,
+                'price' => $product->selling_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_thumbnail,
+                    'size' => $request->size,
+                    'color' => $request->color,
+                    ]
+            ]);
+
+            return response()->json(['success' => 'Successfully added on your cart'],200);
+        }else{
+            Cart::add([
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->qty,
+                'price' => $product->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $product->product_thumbnail,
+                    'size' => $request->size,
+                    'color' => $request->color,
+                    ]
+            ]);
+            return response()->json(['success' => 'Successfully added on your cart'],200);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function getMiniCart()
     {
-        return Cart::create($request->all());
+        $carts = Cart::content();
+        $cart_qty = Cart::count();
+        $cart_total = Cart::total();
+
+        return response()->json([
+            'carts' => $carts,
+            'cart_qty' => $cart_qty,
+            'cart_total' => round($cart_total),
+        ], 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function removeMiniCart($rowId)
     {
-       return Cart::find($id); 
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Product Remove from Cart'],200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $cart=Cart::find($id);
-        $cart->update($request->all());
-        return $cart;
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        return Cart::destroy($id);
-    }
 }
