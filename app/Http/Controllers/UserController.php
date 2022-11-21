@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailNotify;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -40,30 +41,34 @@ class UserController extends Controller
         ],201);
     }
 
-    public function login(Request $request){
-        $fields=$request->validate([
-            'email'=>'required|string',
-            'password'=>'required|string'
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
-
-        $user=User::where('email',$fields['email'])->first();
-        
-        if(!$user || !Hash::check($fields['password'],$user->password)){
-            return response(["message"=>"Wrong Credentials"],401);
+ 
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/');
         }
-
-        $token= $user->createToken('MyAppToken')->plainTextToken;
-        $response=[
-            'user'=>$user,
-            'token'=>$token
-        ];
-
-        return response($response,200);
+        // else if(Auth::attempt($credentials))
+        //   {
+        //     return redirect()->intended('management/dashboard');
+        //     }
+      else{
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    
     }
+}
 
-    public function logout(Request $request){
-        auth()->user()->tokens()->delete();
-
-        return response(["message"=>"user Loggedout!"],200);
-    }
+public function logout(Request $request)
+{
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/');
+}
 }

@@ -15,7 +15,7 @@ use App\Http\Controllers\StripePaymentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
@@ -40,7 +40,7 @@ Route::get('/products/{id}',[ProductController::class,'show']);
 // user routes
 Route::post("/register",[UserController::class,'register']);
 Route::post("/login",[UserController::class,'login']);
-Route::post("/logout",[UserController::class,'logout']);
+Route::get("/logout",[UserController::class,'logout']);
 
 // protected routes
 Route::group(['middleware'=>['auth:sanctum','can:delete product']], function () {
