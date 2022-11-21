@@ -995,7 +995,7 @@
 		<!-- /NEWSLETTER -->
 
 		<!-- FOOTER -->
-		<!-- <footer id="footer">
+		<footer id="footer">
 			<!-- top footer -->
 			<div class="section">
 				<!-- container -->
@@ -1085,7 +1085,7 @@
 				<!-- /container -->
 			</div>
 			<!-- /bottom footer -->
-		</footer> -->
+		</footer>
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
