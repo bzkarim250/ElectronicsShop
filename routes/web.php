@@ -50,7 +50,7 @@ Route::controller(StripePaymentController::class)->group(function(){
 // public routes
 
 // product routes
-Route::get('/products',[ProductController::class,'index']);
+Route::get('/',[ProductController::class,'index']);
 Route::get('/products/{id}',[ProductController::class,'show']);
 Route::post('/products/create',[ProductController::class,'store']);
 Route::resource("/products",ProductController::class);

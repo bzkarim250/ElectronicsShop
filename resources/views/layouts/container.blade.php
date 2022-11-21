@@ -52,6 +52,7 @@
 						
 						<li><button data-toggle="modal" data-target="#exampleModalSignup"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class="fa fa-user-o" ></i>Signup</button></li>
 						<li><button data-toggle="modal" data-target="#exampleModal"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-in" ></i>Login</button></li>
+						<li><button data-toggle="modal" data-target="#exampleModal"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-in" ></i>Become Supplier</button></li>
 					@else
 					<span class="button"><i class=" fa fa-user" style="color: red;"></i> {{auth()->user()->email}} </span>
 					<li><a href="/logout" class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-out" ></i>Logout</a></li>
