@@ -52,7 +52,7 @@
 						
 						<li><button data-toggle="modal" data-target="#exampleModalSignup"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class="fa fa-user-o" ></i>Signup</button></li>
 						<li><button data-toggle="modal" data-target="#exampleModal"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-in" ></i>Login</button></li>
-						<li><button data-toggle="modal" data-target="#exampleModal"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-in" ></i>Become Supplier</button></li>
+						<li><button data-toggle="modal" data-target="#exampleModalSupplier"class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-in" ></i>Become Supplier</button></li>
 					@else
 					<span class="button"><i class=" fa fa-user" style="color: red;"></i> {{auth()->user()->email}} </span>
 					<li><a href="/logout" class="button" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'"><i class=" fa fa-sign-out" ></i>Logout</a></li>
@@ -134,6 +134,69 @@
 	</div>
 	</div>
 </form>
+
+<!-- Modal Become Supplier -->
+<form  class="row g-3 needs-validation" novalidate name="register-form" id="register-form"action="/supplier/create" method="post">
+	{{csrf_field()}}
+	<div class="modal fade login" id="exampleModalSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Apply to become a supplier</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body form-group">
+		<input type="name" class="form-control" name="name" id="exampleInputName"placeholder="Enter Name">
+		@error('name')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror	
+		<input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		@error('email')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror
+			<input type="text" class="form-control" placeholder="Enter Role_id" name="role_id">
+		@error('email')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror
+		<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+		@error('password')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror
+		<input type="text" class="form-control" name="phone" id="exampleInputPassword1" placeholder="phone"> 
+		@error('phone')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror 
+			<input type="text" class="form-control" name="descripton" id="exampleInputPassword1" placeholder="descrition"> 
+		@error('description')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror 
+			<input type="text" class="form-control" name="id_number" id="exampleInputPassword1" placeholder="ID number"> 
+		@error('id_number')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror 
+			<input type="file" class="form-control" name="id_image" id="exampleInputPassword1" placeholder="ID photo"> 
+		@error('id_image')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror 
+			<input type="file" class="form-control" name="profile_image" id="exampleInputPassword1" placeholder="Profile Photo"> 
+		@error('profile_image')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror    
+			<input type="text" class="form-control" name="payment_card" id="exampleInputPassword1" placeholder="Payment Card"> 
+		@error('payment_card')
+			<b><span class="text-danger">{{$message}}</span></b>
+			@enderror   
+	</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+			<button type="submit" class="btn btn-danger" [disabled]="!ngForm.valid">Apply</button>
+		</div>
+		</div>
+	</div>
+	</div>
+</form>
 			<!-- /TOP HEADER -->
 
 			<!-- MAIN HEADER -->
@@ -145,7 +208,7 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
+								<a href="/" class="logo">
 									<img src="{{URL::asset('./img/logo.png')}}" alt="">
 								</a>
 							</div>
