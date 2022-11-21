@@ -59,7 +59,7 @@
 									<div class="products-slick" data-nav="#slick-nav-1">
 									@foreach($products as $product)
 										<!-- product -->
-										<div class="product">
+										<div class="product"  >
 											<div class="product-img">
 												<img src="{{$product->image[0]}}" class="img-fluid" alt="">
 											</div>
@@ -67,12 +67,8 @@
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">{{$product->description}}</a></h3>
 												<h4 class="product-price">{{$product->price}} <del class="product-old-price">$990.00</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
+												<div>
+													<a href="/products/{{$product->id}}">readmore</a>
 												</div>
 												<div class="product-btns">
 													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
@@ -100,4 +96,10 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
+
+
+	<script>
+		const product = document.querySelector('.product');
+		product.addEventListener()
+	</script>
 @endsection
