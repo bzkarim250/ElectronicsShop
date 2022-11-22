@@ -107,6 +107,4 @@ Route::post('cart', [CartController::class, 'addToCart'])
 Route::get('/Admin',function(){
     return view('dashboard.admin.dash');
 });
-Route::get('/usertable',function(){
-    return view('dashboard.tables.usersTable');
-});
+Route::get("/usertable",[UserController::class,'index']);

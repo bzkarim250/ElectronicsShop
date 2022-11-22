@@ -71,4 +71,9 @@ public function logout(Request $request)
     $request->session()->regenerateToken();
     return redirect('/');
 }
+public function index()
+{
+    $users=User::all();
+    return view('dashboard.tables.usersTable')->with('users',$users);
+}
 }

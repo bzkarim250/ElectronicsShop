@@ -298,8 +298,8 @@
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
          
           <li>
-            <a href="components-tooltips.html">
-              <i class="bi bi-circle"></i><span>Tooltips</span>
+            <a href="/usertable">
+              <i class="bi bi-circle"></i><span>View Users</span>
             </a>
           </li>
         </ul>

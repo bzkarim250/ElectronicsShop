@@ -137,7 +137,7 @@
 	</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-			<button type="submit" class="btn btn-danger" [disabled]="!ngForm.valid">Register</button>
+			<button type="submit" class="btn btn-danger" [disabled]="!ngForm.valid" onclick="location.href='/'">Register</button>
 		</div>
 		</div>
 	</div>
