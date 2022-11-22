@@ -66,7 +66,7 @@
 											<div class="product-body">
 												<p class="product-category">{{$product->categories}}</p>
 												<h3 class="product-name"><a href="#">{{$product->description}}</a></h3>
-												<h4 class="product-price">RWF {{$product->price}} <del class="product-old-price">{{$product->price+1000}}</del></h4>
+												<h4 class="product-price">$ {{$product->price}} <del class="product-old-price">{{$product->price+1000}}</del></h4>
 												<div class="product-btns">
 													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
 													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>

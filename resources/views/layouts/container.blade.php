@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+
+	<!-- Dasboar css -->
+	
+
+
+
+
+
+	<!-- end -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -281,7 +290,7 @@
 										</div>
 										<div class="cart-btns">
 											<a href="#">View Cart</a>
-											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+											<a href="/stripe">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
 								</div>

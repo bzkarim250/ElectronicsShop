@@ -1,74 +1,66 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Product;
-// use App\Models\ShipDivision;
 use Illuminate\Http\Request;
-// use Cart;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use App\Models\Cart;
 
 class CartController extends Controller
 {
-    public function addToCart(Request $request, $id)
+    public function cartList()
     {
-        $product = Product::findOrFail($id);
-        if(Session::has('coupon')){
-            Session::forget('coupon');
-        }
-
-        if($product->discount_price == NULL){
-            Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->qty,
-                'price' => $product->selling_price,
-                'weight' => 1,
-                'options' => [
-                    'image' => $product->product_thumbnail,
-                    'size' => $request->size,
-                    'color' => $request->color,
-                    ]
-            ]);
-
-            return response()->json(['success' => 'Successfully added on your cart'],200);
-        }else{
-            Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->qty,
-                'price' => $product->discount_price,
-                'weight' => 1,
-                'options' => [
-                    'image' => $product->product_thumbnail,
-                    'size' => $request->size,
-                    'color' => $request->color,
-                    ]
-            ]);
-            return response()->json(['success' => 'Successfully added on your cart'],200);
-        }
+        $cartItems = \Cart::getContent();
+        // dd($cartItems);
+        return view('cart', compact('cartItems'));
     }
 
-    public function getMiniCart()
-    {
-        $carts = Cart::content();
-        $cart_qty = Cart::count();
-        $cart_total = Cart::total();
 
-        return response()->json([
-            'carts' => $carts,
-            'cart_qty' => $cart_qty,
-            'cart_total' => round($cart_total),
-        ], 200);
+    public function addToCart(Request $request)
+    {
+        \Cart::add([
+            'id' => $request->id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'attributes' => array(
+                'image' => $request->image,
+            )
+        ]);
+        session()->flash('success', 'Product is Added to Cart Successfully !');
+
+        return redirect()->route('cart.list');
     }
 
-    public function removeMiniCart($rowId)
+    public function updateCart(Request $request)
     {
-        Cart::remove($rowId);
-        return response()->json(['success' => 'Product Remove from Cart'],200);
+        \Cart::update(
+            $request->id,
+            [
+                'quantity' => [
+                    'relative' => false,
+                    'value' => $request->quantity
+                ],
+            ]
+        );
+
+        session()->flash('success', 'Item Cart is Updated Successfully !');
+
+        return redirect()->route('cart.list');
     }
 
+    public function removeCart(Request $request)
+    {
+        \Cart::remove($request->id);
+        session()->flash('success', 'Item Cart Remove Successfully !');
+
+        return redirect()->route('cart.list');
+    }
+
+    public function clearAllCart()
+    {
+        \Cart::clear();
+
+        session()->flash('success', 'All Item Cart Clear Successfully !');
+
+        return redirect()->route('cart.list');
+    }
 }

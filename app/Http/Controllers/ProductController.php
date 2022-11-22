@@ -99,4 +99,11 @@ class ProductController extends Controller
     {
         return Product::destroy($id);
     }
+    //for cart
+    public function productList()
+    {
+        $products = Product::all();
+
+        return view('products', compact('products'));
+    }
 }
