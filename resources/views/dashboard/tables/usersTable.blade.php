@@ -32,6 +32,7 @@
                 <th scope="col">Role</th>
                 <th scope="col">Created At</th>
                 <th scope="col">Updated At</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -43,6 +44,13 @@
                 <td>{{$user->role}}</td>
                 <td>{{$user->created_at}}</td>
                 <td>{{$user->updated_at}}</td>
+                <td>
+                <a href="{{ url('/users' . '/' . $user->id)}}" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                <a href="{{ url('/users' . '/' . $user->id)}}" title="Update"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                  <form method="DELETE" action="{{ url('/users' . '/' . $user->id)}}" accept-charset="UTF-8"style="display:inline">
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="" onclick=""><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                            </form></td>
               </tr>
               @endforeach
             </tbody>

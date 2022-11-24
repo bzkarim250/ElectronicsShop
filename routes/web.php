@@ -61,6 +61,7 @@ Route::resource("/products",ProductController::class);
 Route::post("/register",[UserController::class,'register']);
 Route::post("/login",[UserController::class,'login']);
 Route::get("/logout",[UserController::class,'logout']);
+Route::resource("/users",UserController::class);
 
 // protected routes
 Route::group(['middleware'=>['auth:sanctum','can:delete product']], function () {
@@ -103,7 +104,7 @@ Route::post('cart', [CartController::class, 'addToCart'])
 // Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
 // Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 
-//dasbord routes
+//dasboard routes
 Route::get('/Admin',function(){
     return view('dashboard.admin.dash');
 });

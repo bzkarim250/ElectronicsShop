@@ -76,4 +76,29 @@ public function index()
     $users=User::all();
     return view('dashboard.tables.usersTable')->with('users',$users);
 }
+public function show($id)
+{
+    $users = User::find($id);
+    return view('users.show')->with('users',$users);
+}
+
+public function edit($id)
+{
+    $users =User::find($id);
+    return view('users.edit')->with('users', $users);
+}
+
+public function update(Request $request, $id)
+{
+    $users = User::find($id);
+    $input = $request->all();
+    $users->update($input);
+    return redirect('dashboard.tables.usersTable')->with('flash_message', 'user Updated!');  
+}
+public function destroy($id)
+{
+    User::destroy($id);
+    $users =User::find($id);
+    return redirect('dashboard.tables.usersTable')->with('flash_message', 'User deleted!');  
+}
 }
