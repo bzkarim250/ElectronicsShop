@@ -18,7 +18,6 @@ use App\Http\Controllers\OrderController;
 Route::get('/products',[ProductController::class,'index']);
 Route::get('/products/{id}',[ProductController::class,'show']);
 Route::post('/products/create',[ProductController::class,'store']);
-Route::resource("/products",ProductController::class);
 
 // user routes
 Route::post("/register",[UserController::class,'register']);
@@ -52,8 +51,6 @@ Route::get("/supplier/get/{id}",[SupplierController::class,'show']);
 Route::delete("/supplier/delete/{id}",[SupplierController::class,'destroy']);
 Route::put("/supplier/update/{id}",[SupplierController::class,'update']);
 
-Route::resource("products",ProductController::class);
-// Route::resource("supllier",SupplierController::class);
 Route::group(['middleware'=>['auth:sanctum','can:delete order']], function () {
     Route::delete('/orders/delete/{id}',[OrderController::class,'destroy']);
 });

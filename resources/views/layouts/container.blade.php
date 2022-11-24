@@ -13,6 +13,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 		<title>ElectronicsShop</title>
@@ -35,13 +36,6 @@
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="{{URL::asset('css/style.css')}}"/>
-
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
 
     </head>
 	<body>
@@ -145,8 +139,8 @@
 </form>
 
 <!-- Modal Become Supplier -->
-<form  class="row g-3 needs-validation" novalidate name="register-form" id="register-form"action="/supplier/create" method="post">
-	{{csrf_field()}}
+<form  class="row g-3 needs-validation supplier-form" novalidate name="register-form" id="register-form" method="post" enctype="multipart/form-data">
+@csrf
 	<div class="modal fade login" id="exampleModalSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -158,45 +152,16 @@
 		</div>
 		<div class="modal-body form-group">
 		<input type="name" class="form-control" name="name" id="exampleInputName"placeholder="Enter Name">
-		@error('name')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror	
+		<input type="text" class="form-control" name="phone" id="exampleInputPassword1" placeholder="phone">
+		<input type="text" class="form-control" name="descripton" id="exampleInputPassword1" placeholder="descrition"> 
+		<input type="text" class="form-control" name="id_number" id="exampleInputPassword1" placeholder="ID number"> 
 		<input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-		@error('email')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror
-			<input type="text" class="form-control" placeholder="Enter Role_id" name="role_id">
-		@error('email')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror
 		<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-		@error('password')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror
-		<input type="text" class="form-control" name="phone" id="exampleInputPassword1" placeholder="phone"> 
-		@error('phone')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror 
-			<input type="text" class="form-control" name="descripton" id="exampleInputPassword1" placeholder="descrition"> 
-		@error('description')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror 
-			<input type="text" class="form-control" name="id_number" id="exampleInputPassword1" placeholder="ID number"> 
-		@error('id_number')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror 
-			<input type="file" class="form-control" name="id_image" id="exampleInputPassword1" placeholder="ID photo"> 
-		@error('id_image')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror 
-			<input type="file" class="form-control" name="profile_image" id="exampleInputPassword1" placeholder="Profile Photo"> 
-		@error('profile_image')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror    
-			<input type="text" class="form-control" name="payment_card" id="exampleInputPassword1" placeholder="Payment Card"> 
-		@error('payment_card')
-			<b><span class="text-danger">{{$message}}</span></b>
-			@enderror   
+		<input type="file" class="form-control" name="id_image" id="exampleInputPassword1" placeholder="ID photo">  
+		<input type="file" class="form-control" name="profile_image" id="exampleInputPassword1" placeholder="Profile Photo"> 
+		<input type="text" class="form-control" name="payment_card" id="exampleInputPassword1" placeholder="Payment Card"> 
+			
+		 
 	</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
@@ -418,6 +383,43 @@
 		<script src="{{URL::asset('js/nouislider.min.js')}}"></script>
 		<script src="{{URL::asset('js/jquery.zoom.min.js')}}"></script>
 		<script src="{{URL::asset('js/main.js')}}"></script>
+		<script src="../../js/supplier.js"></script>
+		<script>
+			const supplierForm = document.querySelector('.supplier-form');
+			supplierForm.addEventListener('submit',(e) =>{
+				e.preventDefault();
+				let name = supplierForm.name.value;
+				let phone = supplierForm.phone.value;
+				let email = supplierForm.email.value;
+				let descripton = supplierForm.descripton.value;
+				let id = supplierForm.id_number.value;
+				let imgprofile = supplierForm.profile_image.value
+				let idImg = supplierForm.id_image.value;
+				let payment = supplierForm.payment_card.value;
+				let password = supplierForm.password.value;
+				let role_id = 3;
+
+				console.log(role_id,password,payment,imgprofile,idImg,id,descripton,email,phone,name)
+
+				const formData = new FormData();
+				formData.append('name',name);
+				formData.append('email',email);
+				formData.append('password',password);
+				formData.append('phone',phone);
+				formData.append('description',descripton);
+				formData.append('id_number',id);
+				formData.append('id_image',idImg);
+				formData.append('profile_image',imgprofile);
+				formData.append('payment_card',payment);
+
+				fetch('/supplier/create',{
+					method:'POST',
+					headers:{'Content-Type': 'application/json','X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+					body:JSON.stringify(formData),
+				}).then(res => console.log(res)).catch(error => console.log(error))
+
+			})
+		</script>
 
 	</body>
 </html>

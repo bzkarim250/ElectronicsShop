@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a326ebc9d57ae893b2aa124bee48f603",
+    "content-hash": "63d01f815c18543109aa1ae4551b3a7b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -448,6 +448,55 @@
                 "source": "https://github.com/darryldecode/laravelshoppingcart/tree/4.2.2"
             },
             "time": "2022-02-11T14:04:34+00:00"
+        },
+        {
+            "name": "defuse/php-encryption",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/defuse/php-encryption.git",
+                "reference": "b87737b2eec06b13f025cabea847338fa203d1b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/defuse/php-encryption/zipball/b87737b2eec06b13f025cabea847338fa203d1b4",
+                "reference": "b87737b2eec06b13f025cabea847338fa203d1b4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mcrypt": "*",
+                "ext-openssl": "*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Crypto.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Hornby",
+                    "email": "havoc@defuse.ca"
+                }
+            ],
+            "description": "Secure PHP Encryption Library",
+            "keywords": [
+                "aes",
+                "cipher",
+                "encryption",
+                "mcrypt",
+                "security"
+            ],
+            "support": {
+                "issues": "https://github.com/defuse/php-encryption/issues",
+                "source": "https://github.com/defuse/php-encryption/tree/master"
+            },
+            "time": "2015-03-14T20:27:45+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -5719,6 +5768,57 @@
                 "source": "https://github.com/teapot-php/status-code/tree/v1.1.2"
             },
             "time": "2020-11-03T17:14:32+00:00"
+        },
+        {
+            "name": "thomaswelton/laravel-mcrypt-faker",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaswelton/laravel-mcrypt-faker.git",
+                "reference": "a1abbc672951af583a878f376e6c61b54c14f1f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-mcrypt-faker/zipball/a1abbc672951af583a878f376e6c61b54c14f1f1",
+                "reference": "a1abbc672951af583a878f376e6c61b54c14f1f1",
+                "shasum": ""
+            },
+            "require": {
+                "defuse/php-encryption": "~1.2",
+                "php": ">=5.4.0"
+            },
+            "provide": {
+                "ext-mcrypt": "*",
+                "ext-openssl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Thomaswelton\\LaravelMcryptFaker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Welton",
+                    "email": "thomaswelton@me.com"
+                }
+            ],
+            "description": "Allows installation of Laravel where the PHP Mcrypt extension is not available. Provides encryption using OpenSSL, or by disabling encryption entierly.",
+            "keywords": [
+                "encryption",
+                "hack",
+                "laravel",
+                "mcrypt"
+            ],
+            "support": {
+                "issues": "https://github.com/thomaswelton/laravel-mcrypt-faker/issues",
+                "source": "https://github.com/thomaswelton/laravel-mcrypt-faker/tree/1.0.0"
+            },
+            "time": "2015-05-13T22:48:54+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
