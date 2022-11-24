@@ -78,8 +78,8 @@ public function index()
 }
 public function show($id)
 {
-    $users = User::find($id);
-    return view('users.show')->with('users',$users);
+    $user = User::find($id);
+    return view('dashboard.forms.users.user')->with('user',$user);
 }
 
 public function edit($id)
