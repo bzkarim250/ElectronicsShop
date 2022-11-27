@@ -32,7 +32,7 @@ class UserController extends Controller
 
         $data = [
             'subject'=>'Electronics shop mail',
-            'body'=>'this is the email test'
+            'body'=>'Congraturations, your account succesfully created .login with your creadentials'
         ];
         Mail::to($fields['email'])->send(new MailNotify($data));
         

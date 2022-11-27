@@ -165,7 +165,7 @@
 		@error('email')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror
-			<input type="text" class="form-control" placeholder="Enter Role_id" name="role_id">
+			<input type="text" style="display: none;" class="form-control" placeholder="Enter Role_id" value="4" name="role_id">
 		@error('email')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror

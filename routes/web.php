@@ -95,6 +95,8 @@ Route::post("/supplier/create",[SupplierController::class,'store']);
 Route::get("/supplier/get/{id}",[SupplierController::class,'show']);
 Route::delete("/supplier/delete/{id}",[SupplierController::class,'destroy']);
 Route::put("/supplier/update/{id}",[SupplierController::class,'update']);
+Route::get("/register/{id}",[SupplierController::class,'approve']);
+
 
 // Route::resource("supllier",SupplierController::class);
 Route::group(['middleware'=>['auth:sanctum','can:delete order']], function () {
