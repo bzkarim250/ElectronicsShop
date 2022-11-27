@@ -118,6 +118,13 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        return Supplier::destroy($id);
+        $supplier=Supplier::find($id);
+        $data = [
+            'subject'=>'Electronics shop mail',
+            'body'=>'Sorry, your account did not meet our requirements, please try again!'
+        ];
+        Mail::to($supplier->email)->send(new MailNotify($data));
+        Supplier::destroy($id);
+        return redirect('/supplier/getAll');
     }
 }

@@ -46,10 +46,10 @@
                 <a href="#" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                 <a href="/register/{{$user->id}}" title="Approve"><button class="btn bg-success btn-sm"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Approve</button></a>
 
-                  <form method="post" action="/users/{{$user->id}}" accept-charset="UTF-8"style="display:inline">
+                  <form method="post" action="/supplier/delete/{{$user->id}}" accept-charset="UTF-8"style="display:inline">
                                                 {{ csrf_field() }}
                                                 @method('Delete')
-                                                <button type="submit" class="btn btn-danger btn-sm" title="" onclick="return confirm(&quot;Do you want to delete user?&quot;)""><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="" onclick="return confirm(&quot;Do you want to reject request?&quot;)""><i class="bi bi-x" aria-hidden="true"></i>Reject</button>
                                             </form></td>
               </tr>
               @endforeach
