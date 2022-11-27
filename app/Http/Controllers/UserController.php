@@ -36,9 +36,10 @@ class UserController extends Controller
         ];
         Mail::to($fields['email'])->send(new MailNotify($data));
         
-        return response([
-            'user'=>$user,
-        ],201);
+        // return response([
+        //     'user'=>$user,
+        // ],201);
+        return redirect()->intended('/');
     }
 
     public function login(Request $request)

@@ -46,7 +46,6 @@
                 <td>{{$user->updated_at}}</td>
                 <td>
                 <a href="/users/{{$user->id}}" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                <a href="/users/update/{id}" title="Update"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                   <form method="post" action="/users/{{$user->id}}" accept-charset="UTF-8"style="display:inline">
                                                 {{ csrf_field() }}
                                                 @method('Delete')
