@@ -22,7 +22,7 @@
 		$this.slick({
 			slidesToShow: 4,
 			slidesToScroll: 1,
-			autoplay: true,
+			autoplay: false,
 			infinite: true,
 			speed: 300,
 			dots: false,

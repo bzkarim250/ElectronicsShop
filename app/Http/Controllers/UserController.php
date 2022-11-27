@@ -27,7 +27,7 @@ class UserController extends Controller
             'name'=>$fields['name'],
             'email'=>$fields['email'],
             'password'=>bcrypt($fields['password']),
-            'role_id'=>$fields['role_id']
+            'role_id'=>$fields['role_id'] //client default 4
         ]);
 
         $data = [
@@ -81,24 +81,16 @@ public function show($id)
     $user = User::find($id);
     return view('dashboard.forms.users.user')->with('user',$user);
 }
-
-public function edit($id)
-{
-    $users =User::find($id);
-    return view('users.edit')->with('users', $users);
-}
-
 public function update(Request $request, $id)
 {
     $users = User::find($id);
-    $input = $request->all();
-    $users->update($input);
-    return redirect('dashboard.tables.usersTable')->with('flash_message', 'user Updated!');  
+    $users->update($request->all());
+    return redirect('dashboard.forms.users.edit')->with('flash_message', 'user Updated!');  
 }
 public function destroy($id)
 {
     User::destroy($id);
     $users =User::find($id);
-    return redirect('dashboard.tables.usersTable')->with('flash_message', 'User deleted!');  
+    return redirect('/usertable')->with('flash_message', 'User deleted!');  
 }
 }

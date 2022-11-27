@@ -46,10 +46,11 @@
                 <td>{{$user->updated_at}}</td>
                 <td>
                 <a href="/users/{{$user->id}}" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                <a href="/users/{{$user->id}}" title="Update"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                  <form method="DELETE" action="/users/{{$user->id}}" accept-charset="UTF-8"style="display:inline">
+                <a href="/users/update/{id}" title="Update"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                  <form method="post" action="/users/{{$user->id}}" accept-charset="UTF-8"style="display:inline">
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="" onclick=""><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                @method('Delete')
+                                                <button type="submit" class="btn btn-danger btn-sm" title="" onclick="return confirm(&quot;Do you want to delete user?&quot;)""><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form></td>
               </tr>
               @endforeach
