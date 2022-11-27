@@ -49,14 +49,14 @@ class UserController extends Controller
             'password' => ['required'],
         ]);
  
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials) && auth()->user()->role_id==4) {
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
-        // else if(Auth::attempt($credentials))
-        //   {
-        //     return redirect()->intended('management/dashboard');
-        //     }
+        else if(Auth::attempt($credentials))
+          {
+            return redirect()->intended('/Admin');
+            }
       else{
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
@@ -76,6 +76,21 @@ public function index()
 {
     $users=User::all();
     return view('dashboard.tables.usersTable')->with('users',$users);
+}
+public function clients()
+{
+    $users=User::where("role_id",4)->get();
+    return view('dashboard.tables.clientsTable')->with('clients',$users);
+}
+public function admin()
+{
+    $users=User::where("role_id",2)->get();
+    return view('dashboard.tables.adminTable')->with('admin',$users);
+}
+public function supplier()
+{
+    $users=User::where("role_id",3)->get();
+    return view('dashboard.tables.suppliersTable')->with('suppliers',$users);
 }
 public function show($id)
 {

@@ -4,12 +4,12 @@
   <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>All Users</h1>
+  <h1>All Clients</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="index.html">Home</a></li>
       <li class="breadcrumb-item">Tables</li>
-      <li class="breadcrumb-item active">General</li>
+      <li class="breadcrumb-item active">Clients</li>
     </ol>
   </nav>
 </div><!-- End Page Title -->
@@ -26,7 +26,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
@@ -36,20 +36,12 @@
               </tr>
             </thead>
             <tbody>
-            @foreach($users as $user)
+            @foreach($clients as $user)
               <tr>
-                <th scope="row">{{$user->id}}</th>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                @if($user->role_id==1)
-                <td>Super Admin</td>
-                @elseif($user->role_id==2)
-                <td>Admin</td>
-                @elseif($user->role_id==3)
-                <td>Supplier</td>
-                @else
-                <td>Client</td>
-                @endif
+                <td>{{$user->role}}</td>
                 <td>{{$user->created_at}}</td>
                 <td>{{$user->updated_at}}</td>
                 <td>

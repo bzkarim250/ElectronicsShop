@@ -65,6 +65,9 @@ Route::post("/login",[UserController::class,'login']);
 Route::get("/logout",[UserController::class,'logout']);
 Route::resource("/users",UserController::class);
 Route::put("/users/update/{id}",[UserController::class,'update']);
+Route::get("/clientstable",[UserController::class,'clients']);
+Route::get("/admintable",[UserController::class,'admin']);
+Route::get("/supplierstable",[UserController::class,'supplier']);
 
 // protected routes
 Route::group(['middleware'=>['auth:sanctum','can:delete product']], function () {

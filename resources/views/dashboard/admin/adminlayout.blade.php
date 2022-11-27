@@ -300,7 +300,22 @@
          
           <li>
             <a href="/usertable">
-              <i class="bi bi-circle"></i><span>View Users</span>
+              <i class="bi bi-circle"></i><span>All Users</span>
+            </a>
+          </li>
+          <li>
+            <a href="/clientstable">
+              <i class="bi bi-circle"></i><span>Clients</span>
+            </a>
+          </li>
+          <li>
+            <a href="/supplierstable">
+              <i class="bi bi-circle"></i><span>Suppliers</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admintable">
+              <i class="bi bi-circle"></i><span>Admin</span>
             </a>
           </li>
         </ul>
