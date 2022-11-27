@@ -145,7 +145,7 @@
 </form>
 
 <!-- Modal Become Supplier -->
-<form  class="row g-3 needs-validation" novalidate name="register-form" id="register-form"action="/supplier/create" method="post">
+<form  class="row g-3 needs-validation" novalidate name="register-form" id="register-form"action="/supplier/create" method="post" enctype="multipart/form-data">
 	{{csrf_field()}}
 	<div class="modal fade login" id="exampleModalSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -177,7 +177,7 @@
 		@error('phone')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror 
-			<input type="text" class="form-control" name="descripton" id="exampleInputPassword1" placeholder="descrition"> 
+			<input type="text" class="form-control" name="description" id="exampleInputPassword1" placeholder="descrition"> 
 		@error('description')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror 

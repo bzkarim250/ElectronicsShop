@@ -38,13 +38,11 @@ class SupplierController extends Controller
             'phone'=>'integer',
             'description'=>'string',
             'id_number'=>'integer',
-            'id_image'=>'',
-            'profile_image'=>'',
             'payment_card'=>'integer'
         ]);
 
-        $id_img_url = Cloudinary::upload($fields['id_image']->getRealPath())->getSecurePath();
-        $profile_img_url= Cloudinary::upload($fields['profile_image']->getRealPath())->getSecurePath();
+        $id_img_url = Cloudinary::upload($request->id_image->getRealPath())->getSecurePath();
+        $profile_img_url= Cloudinary::upload($request->profile_image->getRealPath())->getSecurePath();
 
         $supplier = new Supplier();
         $supplier->name = $fields['name'];

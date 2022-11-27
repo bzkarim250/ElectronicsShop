@@ -9,10 +9,15 @@ class Supplier extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'firstName',
-        'lastName',
+        'name',
         'email',
-        'phone'
+        'password',
+        'phone',
+        'description',
+        'id_number',
+        'payment_card',
+        'id_image',
+        'profile_image'
     ];
     public function user(){
         return $this->belongsTo(User::class);
