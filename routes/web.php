@@ -7,6 +7,8 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartPageController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,11 @@ Route::resource("/products",ProductController::class);
 Route::post("/register",[UserController::class,'register']);
 Route::post("/login",[UserController::class,'login']);
 Route::get("/logout",[UserController::class,'logout']);
+Route::resource("/users",UserController::class);
+Route::put("/users/update/{id}",[UserController::class,'update']);
+Route::get("/clientstable",[UserController::class,'clients']);
+Route::get("/admintable",[UserController::class,'admin']);
+Route::get("/supplierstable",[UserController::class,'supplier']);
 
 // protected routes
 Route::group(['middleware'=>['auth:sanctum','can:delete product']], function () {
@@ -88,23 +95,32 @@ Route::post("/supplier/create",[SupplierController::class,'store']);
 Route::get("/supplier/get/{id}",[SupplierController::class,'show']);
 Route::delete("/supplier/delete/{id}",[SupplierController::class,'destroy']);
 Route::put("/supplier/update/{id}",[SupplierController::class,'update']);
+Route::get("/register/{id}",[SupplierController::class,'approve']);
+
 
 // Route::resource("supllier",SupplierController::class);
 Route::group(['middleware'=>['auth:sanctum','can:delete order']], function () {
     Route::delete('/orders/delete/{id}',[OrderController::class,'destroy']);
 });
 
-//cart routes
-// Route::get('/product/cart', [ProductController::class, 'productList'])->name('products.list');
-// Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
-Route::post('cart', [CartController::class, 'addToCart'])
-->name(name:'cart.store');
-// Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
-// Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
-// Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
+// Cart routes
+// Add to cart Product route
+Route::post('/cart/data/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
+// mini cart product data get route
+Route::get('/product/mini/cart', [CartController::class,'getMiniCart'])->name('getMiniCartProduct');
+// remove item from mini cart route
+Route::get('/minicart/product-remove/{rowId}', [CartController::class,'removeMiniCart'])->name('removeMiniCartProduct');
 
-//dasbord routes
+
+//dasboard routes
 Route::get('/Admin',function(){
     return view('dashboard.admin.dash');
 });
 Route::get("/usertable",[UserController::class,'index']);
+
+//cart page routes
+Route::get('/my-cart',[CartPageController::class,'myCartView'])->name('myCartView');
+Route::get('/my-cart/list',[CartPageController::class,'showmyCartList'])->name('showmyCartList');
+Route::get('/remove/from-cart/{rowId}',[CartPageController::class,'removeFromCart'])->name('removeFromCart');
+Route::get('/add/in-cart/{rowId}',[CartPageController::class,'addQtyToCart'])->name('addQtyToCart');
+Route::get('/reduce/from-cart/{rowId}',[CartPageController::class,'reduceQtyFromCart'])->name('reduceQtyFromCart');

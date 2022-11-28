@@ -27,18 +27,19 @@ class UserController extends Controller
             'name'=>$fields['name'],
             'email'=>$fields['email'],
             'password'=>bcrypt($fields['password']),
-            'role_id'=>$fields['role_id']
+            'role_id'=>$fields['role_id'] //client default 4
         ]);
 
         $data = [
             'subject'=>'Electronics shop mail',
-            'body'=>'this is the email test'
+            'body'=>'Congraturations, your account succesfully created .login with your creadentials'
         ];
         Mail::to($fields['email'])->send(new MailNotify($data));
         
-        return response([
-            'user'=>$user,
-        ],201);
+        // return response([
+        //     'user'=>$user,
+        // ],201);
+        return redirect()->intended('/');
     }
 
     public function login(Request $request)
@@ -48,14 +49,14 @@ class UserController extends Controller
             'password' => ['required'],
         ]);
  
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials) && auth()->user()->role_id==4) {
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
-        // else if(Auth::attempt($credentials))
-        //   {
-        //     return redirect()->intended('management/dashboard');
-        //     }
+        else if(Auth::attempt($credentials))
+          {
+            return redirect()->intended('/Admin');
+            }
       else{
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
@@ -75,5 +76,37 @@ public function index()
 {
     $users=User::all();
     return view('dashboard.tables.usersTable')->with('users',$users);
+}
+public function clients()
+{
+    $users=User::where("role_id",4)->get();
+    return view('dashboard.tables.clientsTable')->with('clients',$users);
+}
+public function admin()
+{
+    $users=User::where("role_id",2)->get();
+    return view('dashboard.tables.adminTable')->with('admin',$users);
+}
+public function supplier()
+{
+    $users=User::where("role_id",3)->get();
+    return view('dashboard.tables.suppliersTable')->with('suppliers',$users);
+}
+public function show($id)
+{
+    $user = User::find($id);
+    return view('dashboard.forms.users.user')->with('user',$user);
+}
+public function update(Request $request, $id)
+{
+    $users = User::find($id);
+    $users->update($request->all());
+    return redirect('dashboard.forms.users.edit')->with('flash_message', 'user Updated!');  
+}
+public function destroy($id)
+{
+    User::destroy($id);
+    $users =User::find($id);
+    return redirect('/usertable')->with('flash_message', 'User deleted!');  
 }
 }

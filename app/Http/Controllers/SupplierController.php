@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailNotify;
+use App\Models\User;
 
 class SupplierController extends Controller
 {
@@ -19,7 +20,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        return Supplier::all();
+        $users=Supplier::all();
+        return view('dashboard.admin.Supplier.requests')->with('supplier',$users);
     }
 
     /**
@@ -38,13 +40,11 @@ class SupplierController extends Controller
             'phone'=>'integer',
             'description'=>'string',
             'id_number'=>'integer',
-            'id_image'=>'',
-            'profile_image'=>'',
             'payment_card'=>'integer'
         ]);
 
-        $id_img_url = Cloudinary::upload($fields['id_image']->getRealPath())->getSecurePath();
-        $profile_img_url= Cloudinary::upload($fields['profile_image']->getRealPath())->getSecurePath();
+        $id_img_url = Cloudinary::upload($request->id_image->getRealPath())->getSecurePath();
+        $profile_img_url= Cloudinary::upload($request->profile_image->getRealPath())->getSecurePath();
 
         $supplier = new Supplier();
         $supplier->name = $fields['name'];
@@ -65,7 +65,7 @@ class SupplierController extends Controller
         ];
         Mail::to($fields['email'])->send(new MailNotify($data));
 
-        return response($supplier,201);
+        return redirect('/');
     }
 
     /**
@@ -77,6 +77,23 @@ class SupplierController extends Controller
     public function show($id)
     {
         return Supplier::find($id);
+    }
+    public function approve($id)
+    {
+        $supplier=Supplier::find($id);
+        $user=array("name"=>$supplier->name,"email"=>$supplier->email,"password"=>$supplier->password,"role_id"=>3);
+         $newAccount=User::create($user);
+         $newAccount->assignRole('supplier');
+
+         $data = [
+            'subject'=>'Electronics shop mail',
+            'body'=>'Congratulations, your account has been succesfully approved. you are now supplier'
+        ];
+        Mail::to($supplier->email)->send(new MailNotify($data));
+
+         Supplier::destroy($id);
+
+         return redirect('/supplier/getAll');
     }
 
     /**
@@ -101,6 +118,13 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        return Supplier::destroy($id);
+        $supplier=Supplier::find($id);
+        $data = [
+            'subject'=>'Electronics shop mail',
+            'body'=>'Sorry, your account did not meet our requirements, please try again!'
+        ];
+        Mail::to($supplier->email)->send(new MailNotify($data));
+        Supplier::destroy($id);
+        return redirect('/supplier/getAll');
     }
 }

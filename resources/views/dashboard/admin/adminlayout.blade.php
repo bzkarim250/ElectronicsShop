@@ -39,6 +39,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{URL::asset('assets/css/style.css');}}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -221,8 +222,10 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
+            @if(auth()->user())
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{auth()->user()->email}}</span>
+            @endif
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -265,7 +268,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="/logout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -299,7 +302,22 @@
          
           <li>
             <a href="/usertable">
-              <i class="bi bi-circle"></i><span>View Users</span>
+              <i class="bi bi-circle"></i><span>All Users</span>
+            </a>
+          </li>
+          <li>
+            <a href="/clientstable">
+              <i class="bi bi-circle"></i><span>Clients</span>
+            </a>
+          </li>
+          <li>
+            <a href="/supplierstable">
+              <i class="bi bi-circle"></i><span>Suppliers</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admintable">
+              <i class="bi bi-circle"></i><span>Admin</span>
             </a>
           </li>
         </ul>
@@ -371,11 +389,22 @@
       <li class="nav-heading">Pages</li>
 
 <li class="nav-item">
+  <a class="nav-link collapsed" href="/supplier/getAll">
+    <i class="bi bi-check-circle-fill"></i>
+    <span>Supplier Applications</span>
+  </a>
+</li><!-- End Approve Supplier -->
+
+<li class="nav-item">
   <a class="nav-link collapsed" href="users-profile.html">
-    <i class="bi bi-person"></i>
+    <i class="bi bi-gear"></i>
     <span>Settings</span>
   </a>
 </li><!-- End Profile Page Nav -->
+  <a class="nav-link collapsed" href="/logout">
+    <i class="bi bi-box-arrow-right"></i>
+    <span>Logout</span>
+  </a>
 
     
     
