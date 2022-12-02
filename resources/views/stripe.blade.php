@@ -13,12 +13,29 @@
     }    
 </style>
 <body>
-<div class="container">
-    
-    <h2 class="text-center" style="color:red ;">Payment Form</h2>
-    
-    <div class="row">
-        <div class="col-md-7 col-md-offset-3">
+<div class="container d-flex " style="width:80%;margin:0px auto; background-color:brown;flex-direction:row;">
+        <div class="cartElements" style="width:50% ; background-color:azure;">
+        <?php $total = 0;  $count=0?>
+										@if(session('cart'))
+											@foreach(session('cart') as $id => $details)
+											<?php $total += $details['price'] * $details['quantity'];$count++ ?>
+											<div class="product-widget">
+
+												<div class="product-img">
+													<img src="{{ $details['photo'][0] }}"  alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">{{ $details['name'] }}</a></h3>
+													<h4 class="product-price"><span class="qty">{{ $details['quantity'] }}x</span>${{ $details['price'] }}</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+											@endforeach
+											@endif
+										</div>
+        </div>
+        <div style="background-color: green;width:50%">
+            <h2 class="text-center" style="color:red ;">Payment Form</h2>
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
                     <h3 class="panel-title text-center"><strong>Payment Details</strong></h3>
@@ -78,15 +95,19 @@
     
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-danger btn-lg btn-block" type="submit">Pay Now ($100)</button>
+                                <button class="btn btn-danger btn-lg btn-block" type="submit">Pay Now (${{$total}})</button>
                             </div>
                         </div>
                             
                     </form>
                 </div>
-            </div>        
-        </div>
+            </div>    
     </div>
+        </div>
+    
+   
+    
+    
         
 </div>
     

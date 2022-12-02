@@ -256,31 +256,28 @@
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">
+											
+       								  <?php $total = 0;  $count=0?>
+										@if(session('cart'))
+											@foreach(session('cart') as $id => $details)
+											<?php $total += $details['price'] * $details['quantity'];$count++ ?>
 											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product01.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
 
-											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product02.png" alt="">
+													<img src="{{ $details['photo'][0] }}"  alt="">
 												</div>
 												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+													<h3 class="product-name"><a href="#">{{ $details['name'] }}</a></h3>
+													<h4 class="product-price"><span class="qty">{{ $details['quantity'] }}x</span>${{ $details['price'] }}</h4>
 												</div>
 												<button class="delete"><i class="fa fa-close"></i></button>
 											</div>
-										</div>
+											@endforeach
+											@endif
+										</div>		
 										<div class="cart-summary">
-											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
+											<small>{{$count}} Item(s) selected</small>
+											<h5>SUBTOTAL: $ {{$total}}</h5>
 										</div>
 										<div class="cart-btns">
 											<a href="#">View Cart</a>
