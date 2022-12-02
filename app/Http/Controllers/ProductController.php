@@ -30,7 +30,6 @@ class ProductController extends Controller
         $fields = $request ->validate([
             'title'=>'',
             'description'=>'',
-            'image'=>'',
             'price'=>'',
             'color'=>'',
             'size'=>'',
@@ -39,23 +38,24 @@ class ProductController extends Controller
         ]);
 
         $product =  new Product();
-        $images=array();
-        foreach($fields['image'] as $image){
-            $imgUrl = Cloudinary::upload($image->getRealPath())->getSecurePath();
-            array_push($images,$imgUrl);
-        }
+        // $images=array();
+        // foreach($fields['image'] as $image){
+        //     $imgUrl = Cloudinary::upload($image->getRealPath())->getSecurePath();
+        //     array_push($images,$imgUrl);
+        // }
+        $imgUrl = Cloudinary::upload($request->image->getRealPath())->getSecurePath();
        
 
         $product->title=$fields['title'];
         $product->description = $fields['description'];
-        $product->image = $images;
+        $product->image = $imgUrl;
         $product->price = $fields['price'];
         $product->color = $fields['color'];
         $product->size = $fields['size'];
         $product->categories=$fields['categories'];
         $product->user_id=$fields['user_id'];
         $product->save();
-        return response([$product],201);
+        return redirect('/allproducts');
         
 
         
@@ -105,5 +105,11 @@ class ProductController extends Controller
         $products = Product::all();
 
         return view('products', compact('products'));
+    }
+    //for admin
+    public function allproducts() 
+    {
+        $products=Product::all();
+        return view('dashboard.admin.Products.allproducts')->with('products',$products); 
     }
 }

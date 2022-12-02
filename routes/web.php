@@ -87,6 +87,9 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::post("/logout",[UserController::class,'logout']);
 });
 
+//all products
+Route::get('/allproducts',[ProductController::class,'allproducts']);
+
 
 // supplier
 
