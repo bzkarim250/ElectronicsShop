@@ -5,44 +5,13 @@ use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\CartPageController;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CartController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/',function(){
     return view('home');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -87,6 +56,9 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::post("/logout",[UserController::class,'logout']);
 });
 
+//all products
+Route::get('/allproducts',[ProductController::class,'allproducts']);
+
 
 // supplier
 
@@ -105,22 +77,10 @@ Route::group(['middleware'=>['auth:sanctum','can:delete order']], function () {
 
 // Cart routes
 // Add to cart Product route
-Route::post('/cart/data/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
-// mini cart product data get route
-Route::get('/product/mini/cart', [CartController::class,'getMiniCart'])->name('getMiniCartProduct');
-// remove item from mini cart route
-Route::get('/minicart/product-remove/{rowId}', [CartController::class,'removeMiniCart'])->name('removeMiniCartProduct');
-
+Route::get('/addcart/{id}', [CartController::class,'addToCart']);
 
 //dasboard routes
 Route::get('/Admin',function(){
     return view('dashboard.admin.dash');
 });
 Route::get("/usertable",[UserController::class,'index']);
-
-//cart page routes
-Route::get('/my-cart',[CartPageController::class,'myCartView'])->name('myCartView');
-Route::get('/my-cart/list',[CartPageController::class,'showmyCartList'])->name('showmyCartList');
-Route::get('/remove/from-cart/{rowId}',[CartPageController::class,'removeFromCart'])->name('removeFromCart');
-Route::get('/add/in-cart/{rowId}',[CartPageController::class,'addQtyToCart'])->name('addQtyToCart');
-Route::get('/reduce/from-cart/{rowId}',[CartPageController::class,'reduceQtyFromCart'])->name('reduceQtyFromCart');

@@ -252,7 +252,7 @@
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Your Cart</span>
-										<div class="qty">3</div>
+										<div class="qty">{{ Session::get('cart') ? count(Session::get('cart')) : 0 }}</div>
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">

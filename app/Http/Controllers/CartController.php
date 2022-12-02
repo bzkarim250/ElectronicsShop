@@ -1,71 +1,57 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\ShipDivision;
 use Illuminate\Http\Request;
-use Cart;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+use App\Models\Product;
 
 class CartController extends Controller
 {
-    public function addToCart(Request $request, $id)
+    public function addToCart($id)
     {
-        $product = Product::findOrFail($id);
-        if(Session::has('coupon')){
-            Session::forget('coupon');
+        $product = Product::find($id);
+
+        $cart = session()->get('cart');
+
+        // if cart is empty then this the first product
+        if(!$cart) {
+
+            $cart = [
+                    $id => [
+                        "name" => $product->title,
+                        "quantity" => 1,
+                        "price" => $product->price,
+                        "photo" => $product->image
+                    ]
+            ];
+
+            session()->put('cart', $cart);
+
+
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
-        if($product->discount_price == NULL){
-            Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->qty,
-                'price' => $product->selling_price,
-                'weight' => 1,
-                'options' => [
-                    'image' => $product->product_thumbnail,
-                    'size' => $request->size,
-                    'color' => $request->color,
-                    ]
-            ]);
+        // if cart not empty then check if this product exist then increment quantity
+        if(isset($cart[$id])) {
 
-            return response()->json(['success' => 'Successfully added on your cart'],200);
-        }else{
-            Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'title'=>$request->title,
-                'price' => $product->price,
-                'options' => [
-                    'image' => $product->image,
-                    'color' => $product->color,
-                    ]
-            ]);
-            return response()->json(['success' => 'Successfully added on your cart'],200);
+            $cart[$id]['quantity']++;
+
+            session()->put('cart', $cart);
+            session()->save();
+
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
+
         }
+
+        // if item not exist in cart then add to cart with quantity = 1
+        $cart[$id] = [
+            "name" => $product->title,
+            "quantity" => 1,
+            "price" => $product->price,
+            "photo" => $product->image
+        ];
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-
-    public function getMiniCart()
-    {
-        $carts = Cart::content();
-        $cart_qty = Cart::count();
-        $cart_total = Cart::total();
-
-        return response()->json([
-            'carts' => $carts,
-            'cart_qty' => $cart_qty,
-            'cart_total' => round($cart_total),
-        ], 200);
-    }
-
-    public function removeMiniCart($rowId)
-    {
-        Cart::remove($rowId);
-        return response()->json(['success' => 'Product Remove from Cart'],200);
-    }
-
 }
