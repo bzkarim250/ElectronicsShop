@@ -38,7 +38,7 @@ class CartController extends Controller
 
             session()->put('cart', $cart);
             session()->save();
-
+        //  dd(session('cart'));
             return redirect()->back()->with('success', 'Product added to cart successfully!');
 
         }

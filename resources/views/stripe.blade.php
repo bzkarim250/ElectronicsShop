@@ -13,12 +13,12 @@
     }    
 </style>
 <body>
-<div class="container">
-    
-    <h2 class="text-center" style="color:red ;">Payment Form</h2>
-    
-    <div class="row">
-        <div class="col-md-7 col-md-offset-3">
+<div class="container d-flex " style="width:80%;margin:0px auto; background-color:brown;flex-direction:row;">
+        <div class="cartElements" style="width:50% ; background-color:azure;">
+            <h1>Hello</h1>
+        </div>
+        <div style="background-color: green;width:50%">
+            <h2 class="text-center" style="color:red ;">Payment Form</h2>
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
                     <h3 class="panel-title text-center"><strong>Payment Details</strong></h3>
@@ -84,9 +84,13 @@
                             
                     </form>
                 </div>
-            </div>        
-        </div>
+            </div>    
     </div>
+        </div>
+    
+   
+    
+    
         
 </div>
     
