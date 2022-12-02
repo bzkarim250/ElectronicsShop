@@ -13,7 +13,9 @@ class Order extends Model
         'client_address',
         'amount',
         'user_id',
-        'supplier_id'
+        'supplier_id',
+        'client_id',
+        'quantity'
     ];
     public function Supplier(){
         return $this->belongsTo(Supplier::class);

@@ -159,7 +159,7 @@
 		@error('email')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror
-			<input type="text" style="display: none;" class="form-control" placeholder="Enter Role_id" value="4" name="role_id">
+			<input type="text" style="display: none;" class="form-control" value="4" name="role_id">
 		@error('email')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror
@@ -390,7 +390,7 @@
 								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
 							</ul>
 							<span class="copyright">
-								 <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
+								 <a target="_blank" href="#">Sosten & Abdoulkalim</a>
 							</span>
 						</div>
 					</div>

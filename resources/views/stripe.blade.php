@@ -92,13 +92,26 @@
                                 <div class='alert-danger alert'>Please correct the errors and try again.</div>
                             </div>
                         </div>
+                                                
+                        <!-- Placing order -->
+                        @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                        <input type="number" name="product_id" value="{{$id}}" style="display: none;">
+                        <input type="text" name="client_address" value="{{auth()->user()->email}}"style="display: none;">
+                        <input type="number" name="amount" value="{{ $details['price'] }}" style="display: none;">
+                        <input type="number" name="client_id" value="{{ auth()->user()->id }}"style="display: none;">
+                        <input type="number" name="supplier_id" value="{{ $details['supplier_id'] }}"style="display: none;">
+                        <input type="number" name="quantity" value="{{ $details['quantity'] }}"style="display: none;">
+                        @endforeach
+                        @endif
+                            
     
                         <div class="row">
                             <div class="col-xs-12">
                                 <button class="btn btn-danger btn-lg btn-block" type="submit">Pay Now (${{$total}})</button>
                             </div>
                         </div>
-                            
+
                     </form>
                 </div>
             </div>    
