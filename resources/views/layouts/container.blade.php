@@ -139,13 +139,8 @@
 </form>
 
 <!-- Modal Become Supplier -->
-<<<<<<< HEAD
-<form  class="row g-3 needs-validation supplier-form" novalidate name="register-form" id="register-form" method="post" enctype="multipart/form-data">
-@csrf
-=======
 <form  class="row g-3 needs-validation" novalidate name="register-form" id="register-form"action="/supplier/create" method="post" enctype="multipart/form-data">
 	{{csrf_field()}}
->>>>>>> fad78bd4470fc1ee4b34cca6183f6e0d673a79db
 	<div class="modal fade login" id="exampleModalSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -161,14 +156,6 @@
 		<input type="text" class="form-control" name="descripton" id="exampleInputPassword1" placeholder="descrition"> 
 		<input type="text" class="form-control" name="id_number" id="exampleInputPassword1" placeholder="ID number"> 
 		<input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-<<<<<<< HEAD
-		<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-		<input type="file" class="form-control" name="id_image" id="exampleInputPassword1" placeholder="ID photo">  
-		<input type="file" class="form-control" name="profile_image" id="exampleInputPassword1" placeholder="Profile Photo"> 
-		<input type="text" class="form-control" name="payment_card" id="exampleInputPassword1" placeholder="Payment Card"> 
-			
-		 
-=======
 		@error('email')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror
@@ -204,7 +191,6 @@
 		@error('payment_card')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror   
->>>>>>> fad78bd4470fc1ee4b34cca6183f6e0d673a79db
 	</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
