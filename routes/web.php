@@ -78,6 +78,8 @@ Route::group(['middleware'=>['auth:sanctum','can:delete order']], function () {
 // Cart routes
 // Add to cart Product route
 Route::get('/addcart/{id}', [CartController::class,'addToCart']);
+Route::patch('update-cart', [CartController::class,'update']);
+Route::delete('remove-from-cart', [CartController::class,'remove']);
 
 //dasboard routes
 Route::get('/Admin',function(){
