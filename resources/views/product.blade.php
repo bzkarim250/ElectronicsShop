@@ -42,7 +42,7 @@
                                                 </div>
                                             </div>
                                             <div class="add-to-cart" >
-												<button class="add-to-cart-btn" style="color:white;background-color:brown; padding:5px 10px;border:none;margin:10px 0px;"><i class="fa fa-shopping-cart"></i> add to cart</button>
+												<a href="/addcart/{{$product->id}}" class="add-to-cart-btn" style="color:white;background-color:brown; padding:5px 10px;border:none;margin:10px 0px;"><i class="fa fa-shopping-cart"></i> add to cart</a>
 											</div>
                                         </form>
                                     </div>
