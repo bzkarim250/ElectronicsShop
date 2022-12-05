@@ -18,12 +18,12 @@ public function up()
         $table->decimal('amount');
         $table->unsignedBigInteger('product_id');
         $table->unsignedBigInteger('client_id');
-        $table->unsignedBigInteger('supplier_id');
+        // $table->unsignedBigInteger('supplier_id');
         $table->string('client_address');
         $table->timestamps();
         $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
-        $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+        // $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
     });
 }
 

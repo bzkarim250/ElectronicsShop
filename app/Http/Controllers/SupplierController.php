@@ -82,8 +82,19 @@ class SupplierController extends Controller
     {
         $supplier=Supplier::find($id);
         $user=array("name"=>$supplier->name,"email"=>$supplier->email,"password"=>$supplier->password,"role_id"=>3);
-         $newAccount=User::create($user);
-         $newAccount->assignRole('supplier');
+         $user_exists=User::where('email',$supplier->email)->first();
+         if($user_exists)
+         {
+            $user_exists->assignRole('supplier');
+            // Supplier::destroy($id);
+
+         }
+         else
+         {
+            $newAccount=User::create($user);
+            $newAccount->assignRole('supplier');
+            // Supplier::destroy($id);
+         }
 
          $data = [
             'subject'=>'Electronics shop mail',
