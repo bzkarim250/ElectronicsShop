@@ -122,7 +122,7 @@
                         <input type="text" name="client_address" value="{{auth()->user()->email}}"style="display: none;">
                         <input type="number" name="amount" value="{{ $details['price'] }}" style="display: none;">
                         <input type="number" name="client_id" value="{{ auth()->user()->id }}"style="display: none;">
-                        <input type="number" name="supplier_id" value="{{ $details['supplier_id'] }}"style="display: none;">
+                        <!-- <input type="number" name="supplier_id" value="{{ $details['supplier_id'] }}"style="display: none;"> -->
                         <input type="number" name="quantity" value="{{ $details['quantity'] }}"style="display: none;">
                         @endforeach
                         @endif

@@ -29,6 +29,8 @@ class UserController extends Controller
             'password'=>bcrypt($fields['password']),
             'role_id'=>$fields['role_id'] //client default 4
         ]);
+        $user->assignRoleById(4);
+        $user->update();
 
         $data = [
             'subject'=>'Electronics shop mail',
