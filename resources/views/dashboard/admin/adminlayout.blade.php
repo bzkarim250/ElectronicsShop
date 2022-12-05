@@ -47,6 +47,13 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .introduction{
+      margin: 0 auto;
+      width: 100%;
+      background-color: grey;
+    }
+  </style>
 </head>
 
 <body>

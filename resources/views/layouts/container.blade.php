@@ -45,7 +45,6 @@
 				width: 90vw;
 				grid-column-gap: 30px;
 				margin: 0px auto;
-
 			}
 		</style>
     </head>
