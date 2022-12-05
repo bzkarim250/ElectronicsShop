@@ -79,7 +79,7 @@
                 <input type="text" class="form-control" name="size" placeholder="Size" ><br>
                 <input type="text" class="form-control" name="categories" placeholder="Category" ><br>
                 <input type="text" class="form-control" name="InStock" placeholder="Color" value=1 style="display:none" ><br>
-                <input type="text" class="form-control" name="user_id" placeholder="Category" value=12 style="display:none" ><br>
+                <input type="text" class="form-control" name="user_id" placeholder="Category" value="{{auth()->user()->id}}"  style="display:none" ><br>
                 <input type="submit" class="btn btn-primary" value="Save"><br>
               </form>
             </div>
