@@ -12,23 +12,29 @@
   </nav>
 </div><!-- End Page Title -->
 <div class="introduction">
-  <div class="card" style="width:30% ;">
+  <div class="card">
     <div class="card-element">
-      <h3>products</h3>
-      <h4>0</h4>
+      <h3>PRODUCTS</h3>
+      <h4>40</h4>
     </div>
   </div>
-  <div class="card" style="width:30% ;">
+  <div class="card">
     <div class="card-element">
-      <h3>Orders</h3>
-      <h4>0</h4>
+      <h3>ORDERS</h3>
+      <h4>6</h4>
     </div>
   </div>
 
-  <div class="card" style="width:30% ;">
+  <div class="card">
     <div class="card-element">
-      <h3>Users</h3>
-      <h4>0</h4>
+      <h3>USERS</h3>
+      <h4>20</h4>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-element">
+      <h3>APLICATIONS</h3>
+      <h4>10</h4>
     </div>
   </div>
 </div>

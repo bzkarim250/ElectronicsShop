@@ -51,7 +51,16 @@
     .introduction{
       margin: 0 auto;
       width: 100%;
-      background-color: grey;
+      display: flex;
+      justify-content: space-between;
+    }
+    .card{
+      width:20% ;
+      margin: 0px auto;
+      padding: 5px 2px;
+    }
+    .card-element{
+      margin: 0px auto;
     }
   </style>
 </head>
