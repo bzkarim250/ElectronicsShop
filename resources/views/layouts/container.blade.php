@@ -263,7 +263,7 @@
 											<div class="product-widget">
 
 												<div class="product-img">
-													<img src="{{ $details['photo'][0] }}"  alt="">
+													<img src="{{ $details['photo'][0] }}" class="img-fluid"  alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">{{ $details['name'] }}</a></h3>

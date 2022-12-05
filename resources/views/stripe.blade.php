@@ -14,6 +14,20 @@
         display: flex;
         justify-content: space-between;
     }
+    .cartElements{
+        width: 100%;
+    }
+    .product-widget{
+    display: flex !important;
+
+
+    }
+    .product-img img{
+        width: 200px;
+        height: 80px;
+        object-fit: contain;
+        
+    }
     .orders div:last-child{
         width: 90%;
         margin: 0px auto;
@@ -24,12 +38,12 @@
 </style>
 <body>
 <div class="container orders">
-            <div class="cartElements" style="background-color:azure;">
+            <div class="cartElements" >
                     <?php $total = 0;  $count=0?>
 		            @if(session('cart'))
 		            	@foreach(session('cart') as $id => $details)
 		            	    <?php $total += $details['price'] * $details['quantity'];$count++ ?>
-		            	    <div class="product-w" >      
+		            	    <div class="product-widget" >      
 		            	    	<div class="product-img">
 		            	    		<img src="{{ $details['photo'][0] }}"  alt="">
 		            	    	</div>
@@ -43,7 +57,7 @@
 		            @endif
 		    </div>
         <div>
-            <h2 class="text-center" style="color:red ;">Payment Form</h2>
+            <h2 class="text-center" >Payment Form</h2>
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
                     <h3 class="panel-title text-center"><strong>Payment Details</strong></h3>
