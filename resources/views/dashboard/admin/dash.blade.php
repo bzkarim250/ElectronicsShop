@@ -11,7 +11,28 @@
     </ol>
   </nav>
 </div><!-- End Page Title -->
-<h2>Hello</h2>
+<div class="introduction">
+  <div class="card" style="width:30% ;">
+    <div class="card-element">
+      <h3>products</h3>
+      <h4>0</h4>
+    </div>
+  </div>
+  <div class="card" style="width:30% ;">
+    <div class="card-element">
+      <h3>Orders</h3>
+      <h4>0</h4>
+    </div>
+  </div>
+
+  <div class="card" style="width:30% ;">
+    <div class="card-element">
+      <h3>Users</h3>
+      <h4>0</h4>
+    </div>
+  </div>
+</div>
+
 
 
 </main><!-- End #main -->

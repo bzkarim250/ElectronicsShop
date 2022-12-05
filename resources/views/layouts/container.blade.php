@@ -39,9 +39,12 @@
 
 		<style>
 			.allProducts{
-				background-color:blue ;
 				display: grid;
-				grid-template-columns: 800px;
+				grid-template-columns: 25% 25% 25%;
+				grid-template-rows:auto;
+				width: 90vw;
+				grid-column-gap: 30px;
+				margin: 0px auto;
 			}
 		</style>
     </head>
@@ -124,7 +127,7 @@
 		@error('email')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror
-			<input type="text" style="display: none;" class="form-control" placeholder="Enter Role_id" value="1" name="role_id">
+			<input type="text" style="display: none;" class="form-control" placeholder="Enter Role_id" value="4" name="role_id">
 		@error('email')
 			<b><span class="text-danger">{{$message}}</span></b>
 			@enderror
@@ -261,7 +264,7 @@
 											<div class="product-widget">
 
 												<div class="product-img">
-													<img src="{{ $details['photo'][0] }}"  alt="">
+													<img src="{{ $details['photo'][0] }}" class="img-fluid"  alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">{{ $details['name'] }}</a></h3>
