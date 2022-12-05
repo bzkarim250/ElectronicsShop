@@ -34,7 +34,7 @@
 											@endif
 										</div>
         </div>
-        <div style="background-color: green;width:50%">
+        <div style="width:50%">
             <h2 class="text-center" style="color:red ;">Payment Form</h2>
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
