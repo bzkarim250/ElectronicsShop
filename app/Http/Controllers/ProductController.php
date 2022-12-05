@@ -48,7 +48,7 @@ class ProductController extends Controller
 
         $product->title=$fields['title'];
         $product->description = $fields['description'];
-        $product->image = $imgUrl;
+        $product->image = [$imgUrl];
         $product->price = $fields['price'];
         $product->color = $fields['color'];
         $product->size = $fields['size'];
