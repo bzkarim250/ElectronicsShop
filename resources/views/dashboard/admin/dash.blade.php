@@ -33,7 +33,7 @@
   </div>
   <div class="card">
     <div class="card-element">
-      <h3>APLICATIONS</h3>
+      <h3>APPLICATIONS</h3>
       <h4>10</h4>
     </div>
   </div>

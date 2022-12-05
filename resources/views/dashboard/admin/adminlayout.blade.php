@@ -53,6 +53,7 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+      margin-top: 50px;
     }
     .card{
       width:20% ;
@@ -61,6 +62,9 @@
     }
     .card-element{
       margin: 0px auto;
+    }
+    .card-element h3{
+      font-weight: bold;
     }
   </style>
 </head>
