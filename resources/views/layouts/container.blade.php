@@ -318,6 +318,7 @@
 							<div class="footer">
 								<h3 class="footer-title">About Us</h3>
 								<p>Your satsfaction is our Motive.</p>
+								<p></p>
 								<ul class="footer-links">
 									<li><a href="#"><i class="fa fa-map-marker"></i>KN 15 ave</a></li>
 									<li><a href="#"><i class="fa fa-phone"></i>+250 787938344</a></li>

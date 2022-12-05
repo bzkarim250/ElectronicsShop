@@ -97,7 +97,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        return Product::destroy($id);
+        Product::destroy($id);
+        $products =Product::find($id);
+        return redirect('/allproducts')->with('flash_message', 'Product_deleted!');
     }
     //for cart
     public function productList()

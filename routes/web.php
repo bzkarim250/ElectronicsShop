@@ -39,7 +39,7 @@ Route::get("/admintable",[UserController::class,'admin']);
 Route::get("/supplierstable",[UserController::class,'supplier']);
 
 // protected routes
-Route::group(['middleware'=>['auth:sanctum','can:delete product']], function () {
+Route::group(['middleware'=>['auth:sanctum']], function () {
     Route::delete('/products/delete/{id}',[ProductController::class,'destroy']);
 });
 

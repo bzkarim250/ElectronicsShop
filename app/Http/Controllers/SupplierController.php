@@ -91,7 +91,7 @@ class SupplierController extends Controller
         ];
         Mail::to($supplier->email)->send(new MailNotify($data));
 
-         Supplier::destroy($id);
+        //  Supplier::destroy($id);
 
          return redirect('/supplier/getAll');
     }
