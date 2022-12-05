@@ -285,8 +285,9 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
-      <li class="nav-item">
+           <!-- checking role -->
+            @hasanyrole('super-admin|admin')
+            <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-people"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -307,13 +308,17 @@
               <i class="bi bi-circle"></i><span>Suppliers</span>
             </a>
           </li>
+          @role('super-admin')
           <li>
             <a href="/admintable">
               <i class="bi bi-circle"></i><span>Admin</span>
             </a>
           </li>
+          @endrole
         </ul>
       </li><!-- End Components Nav -->
+            @endhasanyrole
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
@@ -329,7 +334,7 @@
         </ul>
       </li><!-- End Forms Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-cash"></i><span>Sales</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -341,7 +346,7 @@
          
           </li>
         </ul>
-      </li><!-- End Tables Nav -->
+      </li>End Tables Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
@@ -350,13 +355,13 @@
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="charts-echarts.html">
-              <i class="bi bi-circle"></i><span>ECharts</span>
+              <i class="bi bi-circle"></i><span>All Orders</span>
             </a>
           </li>
         </ul>
       </li><!-- End Charts Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-wallet"></i><span>Payments</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -377,15 +382,16 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Icons Nav -->
+      </li>End Icons Nav -->
+      @hasanyrole('super-admin|admin')
       <li class="nav-heading">Pages</li>
-
 <li class="nav-item">
   <a class="nav-link collapsed" href="/supplier/getAll">
     <i class="bi bi-check-circle-fill"></i>
     <span>Supplier Applications</span>
   </a>
 </li><!-- End Approve Supplier -->
+@endhasanyrole
 
 <li class="nav-item">
   <a class="nav-link collapsed" href="users-profile.html">
