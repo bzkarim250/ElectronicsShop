@@ -29,7 +29,7 @@ class UserController extends Controller
             'password'=>bcrypt($fields['password']),
             'role_id'=>$fields['role_id'] //client default 4
         ]);
-        $user->assignRoleById(2);
+        $user->assignRole("customer");
         $user->update();
 
         $data = [

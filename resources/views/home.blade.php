@@ -56,7 +56,7 @@
 							<div class="products-tabs">
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
-									<div class="products-slick" data-nav="#slick-nav-1">
+									<div class=" allProducts">
 									@foreach($products as $product)
 										<!-- product -->
 										<div class="product"  >
@@ -76,7 +76,7 @@
 										@endforeach
 										<!-- /product -->
 									</div>
-									<div id="slick-nav-1" class="products-slick-nav"></div>
+									<!-- <div id="slick-nav-1" class="products-slick-nav"></div> -->
 								</div>
 								<!-- /tab -->
 							</div>
