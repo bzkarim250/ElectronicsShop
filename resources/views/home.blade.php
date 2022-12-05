@@ -75,7 +75,7 @@
 											</div>
 											<div style="display:flex;justify-content:space-around;margin-bottom:10px;">
 												<a href="/products/{{$product->id}}" style="color:white;background-color:brown; padding:5px 10px">readmore</a>
-												<a href="/products/{{$product->id}}" style="color:white;background-color:brown; padding:5px 10px">add to cart</a>
+												<a href="/addcart/{{$product->id}}" style="color:white;background-color:brown; padding:5px 10px">add to cart</a>
 											</div>
 										</div>
 										@endforeach

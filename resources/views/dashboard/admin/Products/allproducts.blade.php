@@ -46,7 +46,7 @@
                 <a href="#" title="View"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                 <a href="/products/update/{id}" title="update"><button class="btn bg-success btn-sm"><i class="fa fa-edit" aria-hidden="true">Update</i></button></a>
 
-                  <form method="post" action="/products/delete/{id}" accept-charset="UTF-8"style="display:inline">
+                  <form method="post" action="/products/delete/{{$product->id}}" accept-charset="UTF-8"style="display:inline">
                                                 {{ csrf_field() }}
                                                 @method('Delete')
                                                 <button type="submit" class="btn btn-danger btn-sm" title="" onclick="return confirm(&quot;Do you want to delete the product?&quot;)""><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button>
@@ -70,7 +70,8 @@
               <form action="/products/create" class="product-form" method="Post" enctype='multipart/form-data'>
               {{csrf_field()}}
                 <input type="text" name="title" class="form-control" placeholder="Tiltle" ><br>
-                <input type="text" class="form-control" name="description" placeholder="Description" ><br>
+                <label for="img">Description</label><br>
+                <textarea type="text" class="form-control" name="description" placeholder="Description" > </textarea><br>
                 <label for="img">Select image:</label><br>
                 <input type="file" accept="image/*" class="form-control-file" style="margin-bottom:10px; " name="image" ><br>
                 <input type="text" class="form-control" name="price" placeholder="Price" ><br>
