@@ -35,14 +35,14 @@ class StripePaymentController extends Controller
                 "description" => "Test payment from LaravelTus.com." 
         ]);
         // placing order
-        $newOrder=Order::create([
-            'product_id'=>$request['product_id'],
-            'client_address'=>$request['client_address'],
-            'amount'=>$request['amount'],
-            // 'supplier_id'=>$request['supplier_id'],
-            'client_id'=>$request['client_id'],
-            'quantity'=>$request['quantity']
-        ]);
+        // $newOrder=Order::create([
+        //     'product_id'=>$request['product_id'],
+        //     'client_address'=>$request['client_address'],
+        //     'amount'=>$request['amount'],
+        //     // 'supplier_id'=>$request['supplier_id'],
+        //     'client_id'=>$request['client_id'],
+        //     'quantity'=>$request['quantity']
+        // ]);
       
         Session::flash('success', 'Payment successful!');
               
