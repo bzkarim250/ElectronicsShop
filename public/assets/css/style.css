@@ -397,7 +397,7 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: rgba(163, 95, 95, 0.904);
+  background-color: #0D3D3B;
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
@@ -626,7 +626,7 @@ h6 {
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: black;
+  background-color: #012E42;
 }
 
 @media (max-width: 1199px) {
@@ -702,7 +702,7 @@ h6 {
   font-weight: 600;
   color:white;
   transition: 0.3;
-  background: black;
+  background: #012E42;
   padding: 10px 15px;
   border-radius: 4px;
 }
@@ -710,12 +710,12 @@ h6 {
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: darkred;
+  color: #012E42;
 }
 
 .sidebar-nav .nav-link.collapsed {
   color:white;
-  background: black;
+  background: #012E42;
 }
 
 .sidebar-nav .nav-link.collapsed i {
@@ -723,8 +723,8 @@ h6 {
 }
 
 .sidebar-nav .nav-link:hover {
-  color: darkred;
-  background: black;
+  color: #012E42;
+  background: #244D49;
 }
 
 .sidebar-nav .nav-link:hover i {
