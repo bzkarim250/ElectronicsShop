@@ -28,7 +28,6 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Title</th>
                 <th scope="col">Created At</th>
                 <th scope="col">Updated At</th>
                 <th scope="col">Action</th>
@@ -38,7 +37,6 @@
             @foreach($products as $product)
               <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$product->name}}</td>
                 <td>{{$product->title}}</td>
                 <td>{{$product->created_at}}</td>
                 <td>{{$product->updated_at}}</td>

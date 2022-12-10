@@ -24,7 +24,7 @@
       <h4>6</h4>
     </div>
   </div>
-
+  @role('admin')
   <div class="card">
     <div class="card-element">
       <h3>USERS</h3>
@@ -38,6 +38,7 @@
     </div>
   </div>
 </div>
+@endrole
 
 
 
